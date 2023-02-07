@@ -2,18 +2,29 @@
   "name": "practicereact",
   "version": "1.0.0",
   "description": "learning React",
-  "main": "script.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "author": "rajadurai",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.20.12",
     "parcel": "^2.8.3",
     "process": "^0.11.10"
   },
   "dependencies": {
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajadurainataraj/NamasteReact.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rajadurainataraj/NamasteReact/issues"
+  },
+  "homepage": "https://github.com/rajadurainataraj/NamasteReact#readme"
 }
