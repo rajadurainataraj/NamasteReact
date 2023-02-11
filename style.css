@@ -1,18 +1,91 @@
+* {
+  box-sizing: border-box;
+}
 body {
-    margin:0;
+  margin: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
 }
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
-    }
-.logo,.userIcon{
-    width:50px;
-    height:50px;
-    border-radius: 50%;
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-input {
-    width:90%;
-    padding:7px;
+
+.logo {
+  width: 70px;
+  height: 60px;
+  border-radius: 50%;
+  padding: 5px;
+}
+.logo:hover {
+  transform: scale(1.1);
+  transition: all 400ms ease-in-out;
+}
+.navContainer {
+  display: flex;
+}
+.navItems {
+  display: flex;
+  padding: 0 15px;
+}
+.navItems:hover {
+  color: #fc8019;
+  cursor: pointer;
+}
+li {
+  list-style-type: none;
+  padding-left: 5px;
+}
+.card {
+  /* display: flex;
+  flex-direction: column;
+  gap: 10px; */
+  width: 300px;
+  margin: 10px;
+  overflow: hidden;
+  padding: 5px;
+  border: 1px solid #ccc;
+  padding-bottom: 15px;
+}
+.card:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.cardBarger {
+  width: 100%;
+}
+.cardBarger:hover {
+  transform: scale(1.1);
+  transition: all 400ms ease-in-out;
+}
+
+.restaurentContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+.starIcon {
+  background-color: green;
+}
+.starIconLowRating {
+  background-color: #db7c38;
+}
+.starIcon,
+.starIconLowRating {
+  color: white;
+  padding: 4px;
+}
+.promptTxt {
+  display: none;
+}
+.card:hover .promptTxt {
+  display: block;
+  text-align: center;
+}
+h5,
+h3 {
+  margin: 13px 0;
+}
+.cusino {
+    color:rgba(0, 0, 0, 0.7);
 }

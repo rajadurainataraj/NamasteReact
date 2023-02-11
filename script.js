@@ -1,54 +1,89 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import logo from './assets/images/logo.jpg';
-import profile from './assets/images/person.png';
+import ReactDOM from "react-dom/client";
+import { FaDivide, FaBullseye, FaUserAlt, FaCartPlus, FaStar } from "react-icons/fa";
+import hunt from './assets/images/hunt.jpg';
+import cardsObj from './data';
 
-// let header = React.createElement('h1',{class:'header'},"Fruit Store🍒🍓")
+const Header = () => {
+    return (
+        <div className='headerContainer'>
+            <a href='/'>
+                <img className='logo' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7BguUEknUW4VdwbKOIW81Etx9VnV74qklrg&usqp=CAU' alt='logo' />
+                </a>
 
-// const li = React.createElement('li',{key:'1'},"orange")
-// const li2 = React.createElement('li',{key:'2'},'apple')
-// const li3 = React.createElement('li',{key:'3'},'mango')
+            <ul className='navContainer'>
+                <div className='navItems'>
+                    <FaDivide></FaDivide>
+                    <li>Offers</li>
+                </div>
+                <div className='navItems'>
+                    <FaBullseye></FaBullseye>
+                    <li>Help</li>
+                </div>
+                <div className='navItems'>
+                    <FaUserAlt></FaUserAlt>
+                    <li>Rajadurai</li>
+                </div>
+                <div className='navItems'>
+                    <FaCartPlus></FaCartPlus>
+                    <li>Cart</li>
+                </div>
+            </ul>
 
-// const ul = React.createElement('ul',{key:'ul'},[li,li2,li3])
+        </div>
+    )
 
-// const div = React.createElement('div',{key:'div'},[header,ul])
-// let root = ReactDOM.createRoot(document.getElementById('root'))
-// root.render(div)
-const title = "hello"
-const Content = () =>{
-return "React DOM Element"
 }
 
-// const Header =()=> (
-//     <div>
-//         <h1 key="h1">"h1"</h1>
-//         <h2 key='h2'>"h2"</h2>
-//         <h3 key='h3'>"h3"</h3>
-//     </div>
-// )
-// console.log(<Content/>)
-// const HeaderFunction = ()=>{
-//     return (
-//         <div>
-//             <Header></Header>
-//              {Content()}
-//             <h1>functional render</h1>
-//         </div>
-//     )
-// }
-
-const Header =()=>{
+const RestaurentList = ({ cloudinaryImageId, name, cuisines, avgRating }) => {
+    console.log(typeof Number(avgRating))
     return (
-        <div className='container'>
-            <img className='logo' src={logo}/>
-            <input className='searchBar' type='search' placeholder='search items' name='name' />
-            <img className='userIcon' src={profile} />
+        <div className='card'>
+            <img className='cardBarger'
+                src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" + cloudinaryImageId
+                } alt='cardimg' />
+            <h3 >{name}</h3>
+            <h5 className='cusino'>{cuisines.join(', ')}</h5>
+            <span className={Number(avgRating) >= 4 ? 'starIcon' : Number(avgRating) > 1 ? 'starIconLowRating' : ''}> <FaStar /> {avgRating} </span>
+            <h5 className='promptTxt'>QUICKVIEW</h5>
+        </div>
+    )
+}
+const Body = () => {
+    return (
+        <div className='restaurentContainer'>
+            {
+                cardsObj.map((restaurant) => {
+                    return <RestaurentList key={restaurant.data.id} {...restaurant.data} />
+                })
+            }
+        </div>
+    )
+
+}
+const Footer = () => {
+    return (
+        <div>
+            <h2>Footer</h2>
+            <h3>Footer</h3>
         </div>
     )
 }
 
-let root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(<Header/>)
+const Restaurent = () => {
+    return (
+        <React.Fragment>
+            <Header />
+            <Body />
+            <Footer />
+        </React.Fragment>
+    )
+}
+
+let root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(< Restaurent />)
+
+
 
 
 
