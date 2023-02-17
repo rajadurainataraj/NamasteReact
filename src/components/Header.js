@@ -1,6 +1,7 @@
-import { FaDivide, FaBullseye, FaUserAlt, FaCartPlus, FaStar } from "react-icons/fa";
+import { FaDivide, FaBullseye, FaUserAlt, FaCartPlus, FaStar,FaLockOpen } from "react-icons/fa";
 import { IMG_URL_LOGO } from "../constant";
-export const Header = () => {
+export const Header = ({ loggedIn }) => {
+    let message = false;
     return (
         <div className='headerContainer'>
             <a href='/'>
@@ -23,6 +24,10 @@ export const Header = () => {
                 <div className='navItems'>
                     <FaCartPlus></FaCartPlus>
                     <li>Cart</li>
+                </div>
+                <div className='navItems'>
+                    <FaLockOpen></FaLockOpen>
+                    <li> <button onClick={()=>loggedIn(message)}>LogOut</button> </li>
                 </div>
             </ul>
 
