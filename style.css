@@ -42,7 +42,7 @@ li {
   /* display: flex;
   flex-direction: column;
   gap: 10px; */
-  width: 300px;
+  width: 270px;
   margin: 10px;
   overflow: hidden;
   padding: 5px;
@@ -88,4 +88,17 @@ h3 {
 }
 .cusino {
     color:rgba(0, 0, 0, 0.7);
+}
+.shimmer {
+  margin:20px;
+  width:300px;
+  height:200px;
+  background-color: lightgray;
+}
+.restataurentMenuContainer {
+  display: flex;
+}
+a {
+  text-decoration:none;
+  color:initial;
 }

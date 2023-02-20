@@ -1,6 +1,8 @@
 import RestaurentList from "./RestaurentList"
 import cardsObj from "../constant"
 import { useState, useEffect } from "react"
+import Shimmer from "./Shimmer"
+import { Link } from "react-router-dom"
 
 const URL_API = 'https://www.swiggy.com/dapi/restaurants/list/v5?lat=11.009496&lng=76.945033&page_type=DESKTOP_WEB_LISTING'
 
@@ -15,16 +17,21 @@ function filter(searchData, apiData) {
         return filterData
     }
 }
-const setTimeOut = () => {
-    return 
-}
+
 
 export const Body = () => {
-    const [restaurants, setRestaurants] = useState(cardsObj)
+    const [restaurants, setRestaurants] = useState([])
     const [searchData, setSearchData] = useState('')
     const [apiData, setApiData] = useState([])
+    const [delayState, setDelayState] = useState(true)
+
 
     useEffect(() => {
+        console.log('outside')
+        setTimeout(() => {
+            setDelayState(false)
+            console.log('inside settimeout')
+        }, 2000)
         apiCall()
     }, [])
 
@@ -35,6 +42,9 @@ export const Body = () => {
         setRestaurants(result.data.cards[2].data.data.cards)
     }
 
+    console.log("render")
+    if (delayState) return <Shimmer />
+    //  anotherway ====> if (apiData) return <Shimmer />
     return (
         <>
             <div className="searchContainer">
@@ -42,8 +52,6 @@ export const Body = () => {
                 <input type='text' placeholder="search" value={searchData} onChange={
                     (e) => {
                         setSearchData(e.target.value)
-                        // let data = filter(searchData, restaurants, apiData)
-                        // setRestaurants(data)
                     }
                 } />
                 <button onClick={() => {
@@ -51,15 +59,18 @@ export const Body = () => {
                     setRestaurants(data)
                 }}>Search</button>
             </div>
-            {restaurants.length === 0 ? <h1>No data found</h1> :
 
-                <div className='restaurentContainer'>
-                    {
-                        restaurants.map((restaurant) => {
-                            return <RestaurentList key={restaurant.data.id} {...restaurant.data} />
-                        })
-                    }
-                </div>
+            {
+                restaurants.length === 0 && delayState === false ? <h1>No data found</h1> :
+
+                    <div className='restaurentContainer'>
+                        {
+                            restaurants.map((restaurant) => {
+
+                                return <Link to={"/restaurentmenu/" + restaurant.data.id} key={restaurant.data.id} > <RestaurentList key={restaurant.data.id} {...restaurant.data} /> </Link>
+                            })
+                        }
+                    </div>
             }
         </>
     )

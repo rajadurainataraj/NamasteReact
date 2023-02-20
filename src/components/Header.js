@@ -1,4 +1,4 @@
-import { FaDivide, FaBullseye, FaUserAlt, FaCartPlus, FaStar,FaLockOpen } from "react-icons/fa";
+import { FaDivide, FaBullseye, FaUserAlt, FaCartPlus, FaStar,FaLockOpen,FaInfo } from "react-icons/fa";
 import { IMG_URL_LOGO } from "../constant";
 export const Header = ({ loggedIn }) => {
     let message = false;
@@ -9,6 +9,10 @@ export const Header = ({ loggedIn }) => {
                 </a>
 
             <ul className='navContainer'>
+            <div className='navItems'>
+                    <FaInfo></FaInfo>
+                    <li>AboutUs</li>
+                </div>
                 <div className='navItems'>
                     <FaDivide></FaDivide>
                     <li>Offers</li>
