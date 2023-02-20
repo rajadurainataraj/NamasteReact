@@ -52,6 +52,7 @@ export const Body = () => {
                 <input type='text' placeholder="search" value={searchData} onChange={
                     (e) => {
                         setSearchData(e.target.value)
+                        setRestaurants(filter(e.target.value, apiData))
                     }
                 } />
                 <button onClick={() => {

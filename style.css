@@ -39,9 +39,6 @@ li {
   padding-left: 5px;
 }
 .card {
-  /* display: flex;
-  flex-direction: column;
-  gap: 10px; */
   width: 270px;
   margin: 10px;
   overflow: hidden;
@@ -91,7 +88,7 @@ h3 {
 }
 .shimmer {
   margin:20px;
-  width:300px;
+  width:250px;
   height:200px;
   background-color: lightgray;
 }
