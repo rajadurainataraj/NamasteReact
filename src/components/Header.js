@@ -1,5 +1,7 @@
 import { FaDivide, FaBullseye, FaUserAlt, FaCartPlus, FaStar,FaLockOpen,FaInfo } from "react-icons/fa";
 import { IMG_URL_LOGO } from "../constant";
+import { Link } from 'react-router-dom'
+
 export const Header = ({ loggedIn }) => {
     let message = false;
     return (
@@ -9,10 +11,12 @@ export const Header = ({ loggedIn }) => {
                 </a>
 
             <ul className='navContainer'>
-            <div className='navItems'>
+          <Link to = '/aboutus'>
+                <div className='navItems'>
                     <FaInfo></FaInfo>
                     <li>AboutUs</li>
-                </div>
+                    </div>
+                    </Link>
                 <div className='navItems'>
                     <FaDivide></FaDivide>
                     <li>Offers</li>

@@ -55,7 +55,7 @@ export const Body = () => {
                         setRestaurants(filter(e.target.value, apiData))
                     }
                 } />
-                <button onClick={() => {
+                <button className='btn-search' onClick={() => {
                     let data = filter(searchData, apiData)
                     setRestaurants(data)
                 }}>Search</button>
