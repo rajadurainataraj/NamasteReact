@@ -1,22 +1,26 @@
-import { FaDivide, FaBullseye, FaUserAlt, FaCartPlus, FaStar,FaLockOpen,FaInfo } from "react-icons/fa";
+import { FaDivide, FaBullseye, FaUserAlt, FaCartPlus, FaStar, FaLockOpen, FaInfo } from "react-icons/fa";
 import { IMG_URL_LOGO } from "../constant";
 import { Link } from 'react-router-dom'
+import { useState } from "react";
 
 export const Header = ({ loggedIn }) => {
+    // const [count, setCount] = useState(0)
     let message = false;
+
     return (
         <div className='headerContainer'>
             <a href='/'>
-                <img className='logo' src={IMG_URL_LOGO}  alt='logo' />
-                </a>
-
+                <img className='logo' src={IMG_URL_LOGO} alt='logo' />
+            </a>
+            {/* {count} */}
+            {/* <button onClick={()=>{setCount((count) => count +1)} }>button</button> */}
             <ul className='navContainer'>
-          <Link to = '/aboutus'>
-                <div className='navItems'>
-                    <FaInfo></FaInfo>
-                    <li>AboutUs</li>
+                <Link to='/aboutus'>
+                    <div className='navItems'>
+                        <FaInfo></FaInfo>
+                        <li>AboutUs</li>
                     </div>
-                    </Link>
+                </Link>
                 <div className='navItems'>
                     <FaDivide></FaDivide>
                     <li>Offers</li>
@@ -35,7 +39,7 @@ export const Header = ({ loggedIn }) => {
                 </div>
                 <div className='navItems'>
                     <FaLockOpen></FaLockOpen>
-                    <li> <button onClick={()=>loggedIn(message)}>LogOut</button> </li>
+                    <li> <button onClick={() => loggedIn(message)}>LogOut</button> </li>
                 </div>
             </ul>
 

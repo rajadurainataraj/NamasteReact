@@ -5,6 +5,7 @@ import { Body } from './components/Body'
 import { Footer } from './components/Footer'
 import Authentication from './components/Authentication'
 import AboutUs from './components/About'
+import ContactUs from './components/ContactUs'
 import { createBrowserRouter, RouterProvider,Link,Outlet } from 'react-router-dom'
 import Error from './components/Error'
 import RestaurentMenu from './components/RestaturentMenu'
@@ -45,12 +46,22 @@ const appRouter = createBrowserRouter([
             },
             {
                 path: '/aboutus',
-                element:<AboutUs/>
+                element: <AboutUs />,
+                // children: [
+                //     {
+                //         path: 'contactus',
+                //         element: <ContactUs />
+                //     }  
+                // ]
             },
             {
                 path: '/restaurentmenu/:id',
                 element:<RestaurentMenu/>
-            }    
+            },    
+            {
+                path: '/contactus',
+                element: <ContactUs/>
+            }
         ],
        
     },  
