@@ -1,6 +1,7 @@
+import ContactUs from "./ContactUs"
 import { Outlet, Link } from "react-router-dom"
 import { Component } from "react"
-import ContactUs from "./ContactUs"
+
 
 class AboutUs extends Component {
     constructor(props) {
@@ -33,6 +34,7 @@ class AboutUs extends Component {
                     this.setState({ count: this.state.count + 1 });
                 }}> click</button>
                 <ContactUs name={this.state.count} />
+                <Outlet/>
             </>
 
 

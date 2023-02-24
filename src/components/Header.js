@@ -1,7 +1,8 @@
-import { FaDivide, FaBullseye, FaUserAlt, FaCartPlus, FaStar, FaLockOpen, FaInfo } from "react-icons/fa";
+import { FaDivide, FaBullseye, FaUserAlt, FaCartPlus, FaStar, FaLockOpen, FaInfo, FaHeartbeat } from "react-icons/fa";
 import { IMG_URL_LOGO } from "../constant";
 import { Link } from 'react-router-dom'
-import { useState } from "react";
+import { useState, lazy } from "react";
+import useOnline from '../utils/useOnline'
 
 export const Header = ({ loggedIn }) => {
     // const [count, setCount] = useState(0)
@@ -41,6 +42,19 @@ export const Header = ({ loggedIn }) => {
                     <FaLockOpen></FaLockOpen>
                     <li> <button onClick={() => loggedIn(message)}>LogOut</button> </li>
                 </div>
+                <Link to='/Instamart'>
+                    <div className='navItems'>
+                        <FaLockOpen></FaLockOpen>
+                        <li>Instamart</li>
+                    </div>
+                </Link>
+                <div className='navItems'>
+                    {useOnline() ?
+                        <li> online </li>
+                        : <li> offline </li>}
+                </div>
+
+
             </ul>
 
         </div>

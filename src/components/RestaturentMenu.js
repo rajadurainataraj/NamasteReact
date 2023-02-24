@@ -1,23 +1,12 @@
-import { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { ApiUrl } from "../constant"
 import { IMG_URL_API } from '../constant'
-import { useState } from "react"
 import Shimmer from "./Shimmer"
+import useRestaurentList from '../utils/useRestaurentList'
 const RestaurentMenu = () => {
-    const [getMenu, setGetMenu] = useState({})
-    const [menuItems, setMenuItems] = useState([])
-    const { id } = useParams()
-    useEffect(() => {
-        apiCall()
-    }, [])
-    async function apiCall() {
-        const getData = await fetch(ApiUrl + id)
-        const result = await getData.json()
-        setGetMenu(result)
-        setMenuItems(Object.values(result?.data?.menu?.items))
-    }
 
+    const { id } = useParams()
+    const { getMenu,menuItems } = useRestaurentList(id)
+ 
     //another way 😍
     // if (menuItems.length === 0) return <Shimmer />
 
