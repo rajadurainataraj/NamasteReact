@@ -1,15 +1,16 @@
 import { FaStar } from "react-icons/fa";
+import { IMG_URL_API } from '../constant'
 const RestaurentList = ({ cloudinaryImageId, name, cuisines, avgRating }) => {
-    return (       
-        <div className='card'>
-            <img className='cardBarger'
-                src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" + cloudinaryImageId
-                } alt='cardimg' />
+
+    return (
+        <div className='m-5 w-64 shadow-lg p-3 '>
+            <img className='rounded-lg hover:scale-105 overflow-hidden'
+                src={IMG_URL_API + cloudinaryImageId} alt='cardimg' />
             <h3 >{name}</h3>
-            <h5 className='cusino'>{cuisines.join(', ')}</h5>
+            <h5 className=''>{cuisines.slice(0,5).join(', ')}</h5>
             <span className={Number(avgRating) >= 4 ? 'starIcon' : Number(avgRating) > 1 ? 'starIconLowRating' : ''}> <FaStar /> {avgRating} </span>
             <h5 className='promptTxt'>QUICKVIEW</h5>
-            </div>
+        </div>
     )
 }
 export default RestaurentList;

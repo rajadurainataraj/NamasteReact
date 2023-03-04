@@ -1,7 +1,7 @@
 import ContactUs from "./ContactUs"
 import { Outlet, Link } from "react-router-dom"
 import { Component } from "react"
-
+import userContext from "../utils/UserContext"
 
 class AboutUs extends Component {
     constructor(props) {
@@ -23,9 +23,14 @@ class AboutUs extends Component {
         this.setState({ user: data })
     }
     render() {
+
         console.log("render")
         return (
             <>
+                <userContext.Consumer>
+                    {value => console.log(value)}
+                </userContext.Consumer>
+
                 <h1>AboutUs</h1>
                 <img src={this.state.user.avatar_url} />
                 <h3> {this.state.user.login}</h3>
