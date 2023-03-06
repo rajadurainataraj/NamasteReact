@@ -1,8 +1,8 @@
 export const Footer = () => {
     return (
         <div>
-            <h2>Footer</h2>
-            <h3>Footer</h3>
+            <h2 className="text-center pt-10">Created By Rajadurai❤</h2>
+         
         </div>
     )
 }

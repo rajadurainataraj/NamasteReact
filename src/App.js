@@ -12,6 +12,10 @@ import Error from './components/Error'
 import RestaurentMenu from './components/RestaturentMenu'
 import ColorChangeTask from './components/ColorChangeTask'
 import UserContext from './utils/UserContext'
+import store from './utils/store'
+import { Provider } from 'react-redux'
+import Cart from './components/Cart'
+import Favourites from './components/Favourites'
 
 const Instamart = lazy(() => import('./components/Instamart'))
 
@@ -26,7 +30,7 @@ const App = () => {
     }
 
     return (
-        <React.Fragment>
+            <Provider store={store}>
             <UserContext.Provider value={{user:user,setUser:setUser}}>
                 {isLogin ?
                     <>
@@ -38,10 +42,11 @@ const App = () => {
                     :
                     <Authentication loggedIn={loggedIn} />
                 }
-            </UserContext.Provider>
-        </React.Fragment>
+                </UserContext.Provider>
+                </Provider>
     )
 }
+
 const appRouter = createBrowserRouter([
     {
         path: '/',
@@ -70,6 +75,14 @@ const appRouter = createBrowserRouter([
             {
                 path: '/Instamart',
                 element: <Suspense><Instamart /></Suspense>
+            },
+            {
+                path: '/Cart',
+                element:<Cart/>
+            },
+            {
+                path: '/Favourites',
+                element:<Favourites/>
             }
         ],
 

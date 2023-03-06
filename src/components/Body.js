@@ -14,13 +14,13 @@ import UserContext from "../utils/UserContext"
 export const Body = () => {
 
     const { delayState, apiData, restaurants, searchData, setSearchData, setRestaurants, carosal } = useFetchApiData()
-    const { user,setUser } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
     if (!useOnline()) return <h1>💔 offline,Check your internet connection</h1>
 
     if (delayState) return <Shimmer />
-    
 
-    console.log(user)
+
+    // console.log(user)
     //  anotherway ====> if (apiData) return <Shimmer />
     return (
         <>
@@ -37,12 +37,12 @@ export const Body = () => {
                     let data = filter(searchData, apiData)
                     setRestaurants(data)
                 }}>Search</button>
-            
+
                 <input type='text' value={user.userName} onChange={(e) => setUser({
                     ...user,
                     userName: e.target.value
                 })} />
-            
+
             </div>
 
             {/* <Carosals /> */}
@@ -57,17 +57,21 @@ export const Body = () => {
             </Carousel> */}
 
 
-
+            {console.log(restaurants.length)}
             {
-                restaurants.length === 0 && delayState === false ? <h1>No data found</h1> :
 
-                    <div className='flex-wrap flex  justify-center'>
-                        {
-                            restaurants.map((restaurant) => {
-                                return <Link to={"/restaurentmenu/" + restaurant.data.id} key={restaurant.data.id} > <RestaurentList  {...restaurant.data} /> </Link>
-                            })
-                        }
-                    </div>
+                restaurants.length === 0 && delayState === false ? <h1>No data found</h1> :
+                    searchData.length < 3 ? <h1>type minimum 3 letters</h1> :
+
+                        <div className='flex-wrap flex  justify-center'>
+                            {
+
+                                restaurants.map((restaurant) => {
+
+                                    return <Link to={"/restaurentmenu/" + restaurant.data.id} key={restaurant.data.id} > <RestaurentList  {...restaurant.data} /> </Link>
+                                })
+                            }
+                        </div>
             }
         </>
     )
